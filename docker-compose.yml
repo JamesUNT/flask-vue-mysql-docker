@@ -2,7 +2,7 @@ version: "3"
 
 services:
   db:
-    image: mysql:5.7
+    image: mysql:latest
     volumes:
       - ./db:/docker-entrypoint-initdb.d
       - ./db/data:/var/lib/mysql
@@ -14,16 +14,16 @@ services:
       - MYSQL_DATABASE=quotes_db
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    restart: always
-    depends_on:
-      - db
-    environment:
-      - PMA_HOST=db
-      - MYSQL_ROOT_PASSWORD=root
-    ports:
-      - 8080:80
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   restart: always
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     - PMA_HOST=db
+  #     - MYSQL_ROOT_PASSWORD=root
+  #   ports:
+  #     - 8080:80
 
   api:
     build: ./api
@@ -49,11 +49,11 @@ services:
       - "8000:8000"
       - "8001:80"
 
-  grafana:
-    image: grafana/grafana
-    restart: always
-    ports:
-      - "9878:3000"
-    environment:
-      - GF_SERVER_ROOT_URL=http://grafana.server.name
-      - GF_SECURITY_ADMIN_PASSWORD=secret
+  # grafana:
+  #   image: grafana/grafana
+  #   restart: always
+  #   ports:
+  #     - "9878:3000"
+  #   environment:
+  #     - GF_SERVER_ROOT_URL=http://grafana.server.name
+  #     - GF_SECURITY_ADMIN_PASSWORD=secret

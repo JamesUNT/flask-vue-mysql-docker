@@ -18,12 +18,19 @@ export default {
   name: "home",
   data() {
     return {
-      quotes: [],
+      json: {
+        perimetro: 20,
+      },
     };
   },
   methods: {
     onSubmit() {
-      fetch();
+      fetch("http://localhost:8000", {
+        method: "POST",
+        body: this.json.perimetro,
+      }).then((response) => {
+        console.log("response =>", response);
+      });
     },
   },
 };
