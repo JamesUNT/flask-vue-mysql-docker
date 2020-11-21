@@ -1,6 +1,118 @@
 <template>
   <div class="home">
-    <button @click="$router.push('/new')">Add Quote</button>
+    <div class="home-container">
+      <form class="form" @submit.prevent="onSubmit">
+        <label for="perimetro">Insira aqui o perímetro</label>
+        <div class="form-submit">
+          <input id="perimetro" type="text" />
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
+    </div>
+    <div class="home-list-container">aa</div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "home",
+  data() {
+    return {
+      quotes: [],
+    };
+  },
+  methods: {
+    onSubmit() {
+      fetch();
+    },
+  },
+};
+</script>
+
+
+<style scoped>
+* {
+  box-sizing: border-box;
+  font-family: Georgia, serif;
+  color: #252525;
+}
+
+.home::before,
+.home::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.home {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.home-container {
+  max-width: 400px;
+  background: crimson;
+  margin: 0 auto;
+}
+
+.form {
+  max-width: 500px;
+}
+
+.form-submit::after,
+.form-submit::before {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.form-submit {
+  max-width: 400px;
+  padding: 10px 0;
+  margin: 0 5px;
+}
+
+.form label {
+  font-family: Georgia, serif;
+  text-transform: uppercase;
+  display: block;
+  margin: 0 auto;
+  width: 220px;
+}
+
+.form button {
+  background: #252525;
+  font-family: Georgia, serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  float: left;
+  font-size: 1.4em;
+  width: 130px;
+  padding: 10px;
+  margin: 0 5px;
+  color: #fff;
+}
+
+.form input {
+  background: none;
+  font-style: italic;
+  font-family: Georgia, serif;
+  border: 3px solid #252525;
+  font-size: 1.4em;
+  width: 250px;
+  padding: 10px;
+  float: right;
+}
+
+.home-list-container {
+  max-width: 700px;
+  background: rgb(165, 35, 61);
+  margin: 10px auto 0 auto;
+}
+</style>
+
+    <!-- <button @click="$router.push('/new')">Add Quote</button>
     <hr />
     <div class="container">
       <div class="quote" v-for="quote in quotes" :key="quote.id" :quote="quote">
@@ -11,70 +123,15 @@
 
         <span class="added-by">added by {{quote.added_by}}</span>
       </div>
-    </div>
-  </div>
-</template>
+    </div> -->
 
-<script>
-export default {
-  name: "home",
-  data: () => ({
-    quotes: []
-  }),
-  created() {
-    fetch("http://localhost:8000")
-      .then(res => res.json())
-      .then(response => {
-        this.quotes = response.quotes;
-      })
-      .catch(e => {
-        console.error(e.message);
-      });
-  }
-};
-</script>
-
-
-<style  scoped>
-.home {
-  width: 100%;
-}
-
-button {
-  cursor: pointer;
-  border: 1px solid steelblue;
-  border-radius: 5px;
-  background: white;
-  color: steelblue;
-  height: 2em;
-}
-
-button:hover {
-  background: steelblue;
-  color: white;
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.quote {
-  width: 29%;
-  padding: 0.5rem;
-  margin: 1%;
-  border-radius: 10px;
-  border: 1px solid steelblue;
-  color: black;
-}
-
-.quote span.by {
-  text-decoration: underline;
-}
-
-.quote .added-by {
-  color: rgba(0, 0, 0, 0.6);
-  margin-top: 3em;
-}
-</style>
+  <!-- // created() {
+  //   fetch("http://localhost:8000")
+  //     .then((res) => res.json())
+  //     .then((response) => {
+  //       this.quotes = response.quotes;
+  //     })
+  //     .catch((e) => {
+  //       console.error(e.message);
+  //     });
+  // }, -->
