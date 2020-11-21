@@ -1,17 +1,15 @@
 <template>
-  <div class="index">
-    <div class="home">
-      <div class="home-container">
-        <form class="form" @submit.prevent="onSubmit">
-          <label for="perimetro">Insira aqui o perímetro</label>
-          <div class="form-submit">
-            <input id="perimetro" type="text" />
-            <button type="submit">Enviar</button>
-          </div>
-        </form>
-      </div>
-      <div class="home-list-container">aa</div>
+  <div class="home">
+    <div class="home-container">
+      <form class="form" @submit.prevent="onSubmit">
+        <label for="perimetro">Insira aqui o perímetro</label>
+        <div class="form-submit">
+          <input id="perimetro" type="text" />
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
     </div>
+    <div class="home-list-container">aa</div>
   </div>
 </template>
 
@@ -37,14 +35,6 @@ export default {
   box-sizing: border-box;
   font-family: Georgia, serif;
   color: #252525;
-}
-
-.index {
-  background: red;
-  width: 100%;
-  height: 100%;
-  background: url("/assets/camp.jpeg") no-repeat center;
-  background-size: cover;
 }
 
 .home::before,
