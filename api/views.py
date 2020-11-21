@@ -2,7 +2,7 @@ from db import Db
 from flask import request
 from flask_restful import Resource
 from sqlalchemy import text as sql_text
-from sympy import *
+from sympy import diff, Eq, solveset, symbols
 
 class Equacao(Resource):
     """ A view de equacao """
@@ -12,7 +12,7 @@ class Equacao(Resource):
 
     def get(self):
         """ Retorna a lista de areas """
-        query = "SELECT * FROM area ORDER BY created DESC"
+        query = "SELECT * FROM equacao ORDER BY created DESC"
         res = self.db.connection.execute(query)
         rows = res.fetchall()
         keys = res.keys()
@@ -31,7 +31,6 @@ class Equacao(Resource):
         }
         """
         data = request.get_json()
-        print(type(data))
 
         x, y = symbols('x y')
 
